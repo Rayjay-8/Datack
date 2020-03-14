@@ -1,0 +1,1 @@
++,IDLE,OCR,VAGO,UPDATE,BUILD,Serv.Esto.Dani,Serv.Esto.Marc,PGadmin,V_D,Possicao Padrao,Screen change,Pass,V_Marcio,Sair
