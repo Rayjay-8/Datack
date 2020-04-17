@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>exemplo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style media="screen">
+    body{
+      background: #ddd;
+      color: #000;
+      overflow-x: auto;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+    }
+
+    .container2{
+      width: 100%;
+      margin-top: 80px;
+      text-align: center;
+
+    }
+    .top_bar{
+      border-bottom: 6px solid #f48024;
+      color: #ff1919;
+      width: 100%;
+      height: 70px;
+      background: #3c96ff;
+      box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 3000;
+
+    }
+    .top_bar p{
+      color: #fff;
+      display: block;
+      text-align: center;
+      font-size: 50px;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .top_bar2{
+      display: none;
+      color: #ff1919;
+      width: 300px;
+      height: 100%;
+      position: fixed;
+      background: #3c96ff;
+      box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.6);
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 3005;
+
+    }
+    .exemplo001{
+      color: #fff;
+      position: absolute;
+      font-size: 50px;
+      top: 7px;
+      left: 20px;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .exemplo002{
+      color: #fff;
+      position: absolute;
+      font-size: 50px;
+      top: 7px;
+      left: 20px;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    a{
+      cursor: pointer;
+
+    }
+    .span{
+      cursor: pointer;
+    }
+    .gb_pc{
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      display: block;
+      font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+      margin-top: 100px;
+    }
+    .gb_tc{
+      display:block;
+      display:block;
+      padding: 30px;
+      cursor: pointer;
+      text-align: center;
+      width: 80%;
+
+
+    }
+    .gb_tc:hover{
+      width: 70%;
+      background-color: #343434;
+      border-right: 15px solid #f48024;
+      padding-left: 45px;
+    }
+
+    textarea{
+      display:block;
+      resize: none;
+      width: 100%;
+      color: #fff;
+      background-color: #343434;
+      font-size: 15px;
+    }
+    #cosole_h1{
+      margin: 0;
+      margin-top: 30px;
+      background-color: #202020;
+      color: #fff;
+      height: 40px;
+      width: 100%;
+    }
+    .bloco_02{
+      background-color: #343434;
+      padding: 30px;
+      border-radius: 20px;
+      color: #fff;
+      width: 20%;
+      min-width: 300px;
+      max-width: 400px;
+      display: inline-block;
+      margin: 10px;
+    }
+    .bloco_02 a{
+      display: block;
+      margin: 20px;
+    }
+    .bbutons{
+      background-color: #e66600;
+      text-align: center;
+      display: flex;
+      font-size: 25px;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 20px;
+      padding-left: 10%;
+
+    }
+    .main_blocos{
+      display: contents;
+      padding: 10px;
+      margin: 10px;
+    }
+    .box{
+      width: 500px;
+      overflow: hidden;
+      background: #343434;
+      box-shadow: 0 0 10px black;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      padding: 10px;
+      text-align: center;
+      display: none;
+    }
+    .box span{
+      color: #fff;
+      font-size:50px;
+      display: block;
+      margin: 20px 0;
+    }
+    .box h1{
+      Color: #fff;
+    }
+    .box p{
+      color: #fff;
+    }
+    .close{
+      font-size: 20px;
+      color: #fff;
+      padding: 10px 30px;
+      cursor: pointer;
+      background: #3c96ff;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .input_time{
+      font-size: 17px;
+      background: #343434;
+      color: #fff;
+      border: 3px solid #e66600;
+      padding: .3ch 5px;
+      text-align: center;
+      border-radius: 7px;
+    }
+    .check_bbox{
+      font-size: 26px;
+    }
+
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      function  show_menu(){
+        $('#id_top_bar').css('opacity',0.6)
+        //$('.container2').css('opacity', 0.4);
+        $('#id_top_bar2').css('display',"inline")
+      }
+      function click_out() {
+        hide_menu();
+      }
+      function  hide_menu(){
+        $('#id_top_bar').css('opacity',1)
+        //$('.container2').css('opacity', 1);
+        $('#id_top_bar2').css('display',"none")
+      }
+      function insert_console(type_format) {
+        if (type_format == "img"){
+          //OS IMPORTES SAO FEITOS AQUI
+          var template = "import imgsearch\nimport time\nimport base64"
+          var ja_importados = $('#console_box').val().includes(template)
+          if (ja_importados != true){
+            insert_text_in_line(template,1)}
+          insert_text_in_line($('#data1').val(),100)
+          open_img();
+        //$('#console_box').append($('#data1').val())
+      }else {
+        console.log("Erro file type not expected")
+      }
+      }
+      function insert_text_in_line(text,nline) {
+        let ta = $("#console_box").val(),
+        split_text = ta.split("\n");
+        if (nline <= split_text.length - 1) split_text.splice(nline - 1, 0, text);
+        else split_text.push(text);
+      $("#console_box").val(split_text.join("\n"));
+      }
+      function show_img_src(){
+        for (var i = 0; i < lista_dados_img.length; i++) {
+          console.log(lista_dados_img[i]);
+        }
+        return lista_dados_img;
+      }
+      const lista_dados_img = [];
+      function open_img() {
+        var fonte_img = $('#previe').attr('src');
+        lista_dados_img.push(fonte_img.split(",")[1])
+        var lenlen = lista_dados_img.length
+        //insert_text_in_line("Img0"+lenlen+" = Base64[...]",100);
+        insert_text_in_line("Img0"+lenlen+' = """'+fonte_img.split(",")[1]+'"""',100);
+        insert_text_in_line("imgdata  = base64.b64decode(Img0"+lenlen+")",100);
+        insert_text_in_line("filename = 'img"+lenlen+".png'",100);
+        insert_text_in_line("with open(filename, 'wb') as f:",100);
+        insert_text_in_line("    f.write(imgdata)",100);
+        console.log(lista_dados_img);
+      }
+      function previewFile(){
+
+        var preview = document.querySelector('img');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+          reader.onloadend = function () {
+          preview.src = reader.result;}
+          console.log(reader);
+
+          if (file) {
+            reader.readAsDataURL(file);
+
+          } else {  preview.src = "";}
+          show_preview();
+      }
+      function show_preview(){
+        $('#previe').css('display','inline')
+        //console.log("mudou");
+      }
+      function configs_avacadas(retorno){
+        console.log(retorno);
+      }
+      function pop(opc){
+        $('.container2').css('opacity', 0.4);
+        if (opc == "opc3") {
+          $('#box3').css('display','block');
+        }else if (opc == "opc1") {
+          console.log("opca 001");
+          $('#box1').css('display','block');
+        }
+        else {
+          $('#box2').css('display','block');
+        }
+
+
+      }
+      function closee(){
+        $('.container2').css('opacity', 1);
+        $('.box').css('display','none');
+        $('.box2').css('display','none');
+        $('.box1').css('display','none');
+      }
+      var cli = 0;
+      function check() {
+        if (cli == 0) {
+          //$('.check_bbox').css('background',"#000")
+          $('.check_bbox').removeClass("fa fa-square");
+          $('.check_bbox').addClass("fa fa-check-square")
+          $('.check_bbox').css('color','rgb(106, 226, 106)')
+          $('.check_bbox').css('background','#343434')
+
+          cli = 1;
+        }else {
+          //$('.check_bbox').css('background',"#fff")
+          $('.check_bbox').removeClass("fa fa-check-square");
+          $('.check_bbox').addClass("fa fa-square")
+          $('.check_bbox').css('color','#fff')
+
+          cli = 0;
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+
+
+    <div class="top_bar" id="id_top_bar">
+      <p>
+        &#129418DataCk&#129418;
+        <div class="icone_menu">
+          <i class="fa fa-bars exemplo001" onclick="show_menu()"></i>
+        </div>
+      </p>
+    </div>
+
+    <div class="top_bar2" id="id_top_bar2">
+        <div class="icone_menu">
+          <i class="fa fa-bars exemplo002" onclick="hide_menu()"></i>
+          <a class="gb_pc">
+            <span class="gb_tc">
+              <i class="fas fa-home fa-fw"></i>
+              Home</span>
+            <span class="gb_tc fas fa-camera">
+              Screenshot</span>
+            <span class="gb_tc fas fa-cog">
+              Configuração</span>
+              <span class="gb_tc fas fa-cog">
+                Status</span>
+                <span class="gb_tc fas fa-cog">
+                  Meus Scripts</span>
+          </a>
+        </div>
+    </div>
+
+    <nav class="navbar2" id="ray">
+        <div class="container2" onclick="click_out()">
+          <div class="main_blocos">
+
+            <div class="bloco_02">
+              <h1>Procurar por objeto na tela</h1>
+              <input type="file"  id="avatar" onchange="previewFile()" name="avatar" accept="image/png, image/jpeg">
+
+              <img src="" style="display: none;" id="previe" alt="Prévia da imagem...">
+
+              <a class="bbutons" onclick='insert_console("img")'>Adicionar ao console</a>
+              <a class="bbutons_config fas fa-cog" onclick='pop("opc1")'>Configuração</a>
+              <a class="fas fa-question-circle">Ajuda</a>
+
+            </div>
+
+            <div class="bloco_02">
+              <h1>Pressionar tecla</h1>
+              <a class="bbutons" onclick='insert_console("img")'>Adicionar ao console</a>
+              <a class="bbutons_config fas fa-cog" onclick='pop("opc2")'></a>
+            </div>
+
+            <div class="bloco_02">
+              <h1>Possicao absolute</h1>
+
+              <a class="bbutons" onclick='insert_console("img")'>Adicionar ao console</a>
+              <a class="bbutons_config fas fa-cog" onclick='pop("opc3")'></a>
+
+            </div>
+
+          </div>
+
+
+          <h1 id="cosole_h1">Console</h1>
+          <textarea id="console_box" name="name" rows="30" cols="3"></textarea>
+        </div>
+
+      </nav>
+
+<div class="box" id="box3">
+<span class="fas fa-atom"></span>
+<h1>Tela de Configuração 3</h1>
+<a class="close" id="close_id" onclick="closee()">Close</a>
+</div>
+
+<div class="box" id="box2">
+<span class="fas fa-keyboard"></span>
+<h1>Tela de Configuração 2</h1>
+<a class="close" id="close_id" onclick="closee()">Close</a>
+</div>
+
+<div class="box" id="box1" style="display: none;">
+<span class="fas fa-folder-open"></span>
+<h1>Configuração de controle</h1>
+<p>Tempo de Segundos procurando:
+<input class="input_time" value="5" type="number" min="0" max="1000"></p>
+
+
+
+<p>% Taxa de precision:
+<input class="input_time" value="90" type="number" min="50" max="100"></p>
+
+<p>Set cod flag erro:
+<input class="input_time" type="text" name="" value="FailSearch(img1)">
+</p>
+<p>Realizar ajuste automatico:
+<a class="fa fa-square check_bbox" onclick="check()"></a>
+</p>
+
+<a class="close" id="close_id" onclick="closee()">Close</a>
+
+</div>
+
+
+  </body>
+</html>
